@@ -4,12 +4,16 @@ import threading
 from bots.botSummary import *
 
 class botManager:
+	tradingBots=[]
+
 	@staticmethod
 	def initialiseBots():
+		run_event = threading.Event()
+		run_event.set()
 		with open("bots.json", "r") as read_file:
 			data = json.load(read_file)
 		bs=botSummary(data)
-
+		#print(json.dumps(data["bots"][0], indent=4, sort_keys=False))
 		try:
 			bs.thread.start()
 			while bs.thread.is_alive(): 
@@ -17,6 +21,7 @@ class botManager:
 		except (KeyboardInterrupt, SystemExit):
 			logging.warning("Key Board Interrupt Recieved, Exiting Thread(s)")
 			sys.exit()
+
 
 	@staticmethod
 	def regenerateDefaultBotConfiguration():

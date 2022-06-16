@@ -1,14 +1,16 @@
 {
 	"account_summary": {
 		"refresh_time": 5,
-		"known_as": "SummaryBot"
+		"known_as": "SummaryBot1"
 	},
 	"bots": [
 		{
 			"id": 1,
 			"trade_token": "SPELL_USDC",
 			"refresh_time": 1,
-			"bs_threshold_perc": 1
+			"buy_sell_threshold_percent": 1,
+			"type":"grid",
+			"max_value_buy_sell":1
 		},
 		{
 			"id": 1,

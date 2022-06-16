@@ -4,6 +4,7 @@ import threading
 from myquery import *
 import logging
 import sys
+from currency import *
 
 class botSummary:
 	thread=None 
@@ -26,31 +27,11 @@ class botSummary:
 				tokens.append(t)
 				c=t.split("_")
 				co=currency(c[0], t)
+				co.update()
 				currencies.append(co)
-				logging.info(co.trade_token + " x " +  str(co.getBalance()) + " @ $" + str(co.getPrice()))
+				logging.info("Holding:" + co.trade_token + " x " +  str(co.getBalance()) + " @ $" + str(co.getPrice()))
 				dollar_total=dollar_total+currencies[bot].getDollarValue()
+
 			logging.info("<" + self.config["account_summary"]["known_as"] +"> Total Account Dollar Value $" + str(dollar_total))
-			#for c in currencies:
-			#	logging.info(c.trade_token + " x " + str(c.getBalance()))
 			refreshTime=self.config["account_summary"]["refresh_time"]
 			time.sleep(refreshTime)
-
-
-
-
-class currency:
-	currency=None
-	trade_token=None
-	def __init__(self, currency,trade_token):
-		self.currency=currency
-		self.trade_token=trade_token
-
-	def getBalance(self):
-		return myquery.getCurrencySummary(self.currency)["result"]["accounts"][0]["balance"]
-
-	def getPrice(self):
-		return myquery.getBidPrice(self.trade_token)
-
-	def getDollarValue(self):
-		value=self.getBalance()*self.getPrice()
-		return value

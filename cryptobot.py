@@ -74,7 +74,7 @@ def checkArgs(args):
 			time.sleep(0.01)#Delay so any logging in the sister thread can be completed
 			logging.warning("Exit Argument Given - exiting now")
 			sys.exit()
-	#run()
+	run()
 
 if __name__=='__main__':
 	
