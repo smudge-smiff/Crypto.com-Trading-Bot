@@ -1,0 +1,20 @@
+{
+	"account_summary": {
+		"refresh_time": 5,
+		"known_as": "SummaryBot"
+	},
+	"bots": [
+		{
+			"id": 1,
+			"trade_token": "SPELL_USDC",
+			"refresh_time": 1,
+			"bs_threshold_perc": 1
+		},
+		{
+			"id": 1,
+			"trade_token": "RNDR_USDT",
+			"refresh_time": 10,
+			"bs_threshold_perc": 1
+		}
+	]
+}

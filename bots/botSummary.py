@@ -27,8 +27,11 @@ class botSummary:
 				c=t.split("_")
 				co=currency(c[0], t)
 				currencies.append(co)
+				logging.info(co.trade_token + " x " +  str(co.getBalance()) + " @ $" + str(co.getPrice()))
 				dollar_total=dollar_total+currencies[bot].getDollarValue()
 			logging.info("<" + self.config["account_summary"]["known_as"] +"> Total Account Dollar Value $" + str(dollar_total))
+			#for c in currencies:
+			#	logging.info(c.trade_token + " x " + str(c.getBalance()))
 			refreshTime=self.config["account_summary"]["refresh_time"]
 			time.sleep(refreshTime)
 
